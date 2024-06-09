@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddln6belith8p"]
+
+[ext_resource type="Texture2D" uid="uid://dfx58a07jd2h1" path="res://ART/Apocalypse Character Pack/Zombie/Idle.png" id="1_hoa7a"]
+[ext_resource type="Script" path="res://SCENES/Monster.gd" id="1_vuojo"]
+
+[sub_resource type="Animation" id="Animation_wupj7"]
+resource_name = "idleS"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_voyem"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww8w6"]
+_data = {
+"RESET": SubResource("Animation_voyem"),
+"idleS": SubResource("Animation_wupj7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8q5o"]
+radius = 15.1327
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_px8qw"]
+radius = 101.0
+
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_vuojo")
+speed = null
+vision_radius = null
+attack_radius = null
+damage = null
+patrol_points = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_hoa7a")
+hframes = 6
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_ww8w6")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_d8q5o")
+
+[node name="AreaOfVision2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfVision2D"]
+shape = SubResource("CircleShape2D_px8qw")

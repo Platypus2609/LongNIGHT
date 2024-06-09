@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://o1ea57esp47j"]
+
+[ext_resource type="Script" path="res://SCENES/AreaOfVision2D.gd" id="1_t5kcy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n227r"]
+radius = 49.6488
+
+[node name="AreaOfVision2D" type="Area2D"]
+position = Vector2(1146, 0)
+script = ExtResource("1_t5kcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n227r")
