@@ -1,6 +1,6 @@
 extends Control
 
-func _ready():
+func _ready() -> void:
 	print("Intro Scene Loaded")
 	var note_text = "Привіт! Краще б тобі цього не читати!\n"
 	note_text += "Я намагався протриматися якомога довше, але монстри всюди. Щоб залишитися в живих, я зрозумів кілька речей:\n"
@@ -11,7 +11,7 @@ func _ready():
 	note_text += "Щасти! Це буде довга ніч!"
 	$Label.text = note_text
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("Переходжу до сцени Game")
 		get_tree().change_scene_to_file("res://Scenes/Game.tscn")

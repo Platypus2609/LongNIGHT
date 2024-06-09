@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-@export var speed = 200
-var health = 100
-var max_health = 100
+@export var speed: float = 200.0
+var health: int = 100
+var max_health: int = 100
 
-func _ready():
+func _ready() -> void:
 	print("Player ready")
 	$AnimationPlayer.play("idleS")
 	set_process(true)
 	add_to_group("Player")
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	var movement_velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		movement_velocity.x += 1
@@ -32,12 +32,12 @@ func _process(_delta):
 		if $AnimationPlayer.is_playing():
 			$AnimationPlayer.stop()
 
-func take_damage(damage):
+func take_damage(damage: int) -> void:
 	health -= damage
 	print("Player took damage! Health: ", health)
 	if health <= 0:
 		die()
 
-func die():
+func die() -> void:
 	queue_free()
 	print("Player died")

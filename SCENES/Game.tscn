@@ -108,13 +108,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enmid"]
 size = Vector2(11, 12)
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_dcnvm")
 monster_scene = ExtResource("7_u84nw")
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("8_vm682")
 monster_scene = ExtResource("7_u84nw")
+spawn_outside_view = true
 
 [node name="tree" type="StaticBody2D" parent="Map"]
 position = Vector2(-183, 471)
@@ -178,7 +179,7 @@ shape = SubResource("RectangleShape2D_enmid")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 1)
-zoom = Vector2(0.865, 0.865)
+zoom = Vector2(4.21, 4.21)
 position_smoothing_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
